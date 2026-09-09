@@ -1,0 +1,27 @@
+---
+import Logo from './Logo.astro';
+import NavLink from './NavLink.astro';
+import Language from './Language.astro';
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <Logo />
+    <NavLink />
+    <Language />
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-white);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+    padding-block: var(--space-4);
+  }
+</style>

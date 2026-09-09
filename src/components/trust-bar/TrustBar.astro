@@ -1,0 +1,129 @@
+---
+const features = [
+    {
+    title: "Kualitas Terjamin",
+    desc: "Produk berkualitas tinggi yang telah dipilih untuk mendukung kebutuhan proyek Anda.",
+    icon: "shield",
+    },
+    {
+    title: "Layanan Profesional",
+    desc: "Tim berpengalaman siap membantu memberikan solusi yang tepat dan terpercaya.",
+    icon: "check",
+    },
+    {
+    title: "Produk Pilihan",
+    desc: "Material dari brand terpercaya yang telah teruji kualitas dan keandalannya.",
+    icon: "box",
+    },
+    {
+    title: "Mitra Terpercaya",
+    desc: "Membangun kerja sama jangka panjang dengan pelayanan yang profesional dan terpercaya.",
+    icon: "handshake",
+    },
+];
+---
+
+<section class="trust-bar">
+    <div class="container">
+        <div class="trust-bar-grid">
+            {features.map((item) => (
+                <div class="trust-item">
+                    <div class="trust-icon">
+                        {item.icon === "shield" && (
+                            <svg width="55" height="55" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2L4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            </svg>
+                        )}
+                        {item.icon === "check" && (
+                            <svg width="55" height="55" viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M8 12l2.5 2.5L16 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        )}
+                        {item.icon === "box" && (
+                            <svg width="55" height="65" viewBox="0 0 24 24" fill="none">
+                                <path d="M21 8l-9-5-9 5 9 5 9-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                <path d="M3 8v8l9 5 9-5V8" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                <path d="M12 13v8" stroke="currentColor" stroke-width="1.5"/>
+                            </svg>
+                        )}
+                        {item.icon === "handshake" && (
+                            <svg width="55" height="55" viewBox="0 0 24 24" fill="none">
+                                <path d="M2 12l4-4h3l3 3M22 12l-4-4h-3l-3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M9 11l-3 3a1.5 1.5 0 002 2l1-1M15 11l3 3a1.5 1.5 0 01-2 2l-1-1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M8 14l2 2a1.5 1.5 0 002-2M16 14l-2 2a1.5 1.5 0 01-2-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        )}
+                    </div>
+                    <div class="trust-text">
+                        <h3 class="trust-title">{item.title}</h3>
+                        <p class="trust-desc">{item.desc}</p>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+</section>
+
+<style>
+    .trust-bar {
+        padding-block: 74px;
+        background: var(--color-background);
+    }
+    .trust-bar-grid {
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--space-6);
+        align-items: center;
+        background: var(--color-primary-navy);
+        border-radius: var(--radius-lg);
+        padding: var(--space-12) var(--space-12);
+    }
+    .trust-item {
+        grid-column: span 3;
+        display: flex;
+        align-items: center;
+        gap: var(--space-4);
+    }
+    .trust-item:not(:first-child) {
+        border-left: 1px solid rgba(255, 255, 255, 0.2);
+        padding-left: var(--space-6);
+    }
+    .trust-icon {
+        flex-shrink: 0;
+        color: var(--color-white);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .trust-title {
+        font-family: var(--font-family);
+        font-weight: 600;
+        font-size: 18px;
+        color: var(--color-white);
+        margin: 0 0 var(--space-1);
+    }
+    .trust-desc {
+        font-family: var(--font-family-body);
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--color-white);
+        margin: 0;
+    }
+
+    @media (max-width: 767px) {
+        .trust-bar-grid {
+            padding: var(--space-6);
+        }
+        .trust-item {
+            grid-column: span 12;
+        }
+        .trust-item:not(:first-child) {
+            border-left: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-left: 0;
+            padding-top: var(--space-4);
+        }
+    }
+</style>
