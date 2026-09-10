@@ -1,18 +1,10 @@
 ---
-const NavItems = [
-  { name: 'Beranda', href: '/' },
-  { name: 'Tentang Kami', href: '/tentang-kami' },
-  { name: 'Produk', href: '/produk', dropdown:true },
-  { name: 'Layanan', href: '/layanan' },
-  { name: 'Proyek', href: '/proyek' },
-  { name: 'Berita', href: '/berita' },
-  { name: 'Kontak', href: '/kontak' },
-];
+import { navItems } from "../../Data/navLink.ts";
 ---
 
 <nav class="main-nav" aria-label="Main navigation">
   <ul>
-    {NavItems.map((item) => (
+    {navItems.map((item) => (
         <li class={item.dropdown? "has-dropdown" : ""}>
             <a href={item.href}>
                 {item.name}
