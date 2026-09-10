@@ -1,0 +1,236 @@
+---
+const categories = [
+  {
+    eyebrow: "PRODUK KAMI",
+    name: "Coil / Membrane",
+    desc: "Material bitumen berkualitas tinggi untuk perlindungan atap dan struktur bangunan dari kebocoran.",
+    image: "/images/Material Produk - Coil.png",
+    href: "/produk/coil-membrane",
+    icons: [
+      { icon: "shield", label: "Tahan Air", desc: "Perlindungan maksimal dari kebocoran." },
+      { icon: "layers", label: "Kuat & Tahan Lama", desc: "Daya tahan tinggi terhadap cuaca ekstrem." },
+      { icon: "thermometer", label: "Tahan Cuaca Ekstrem", desc: "Tetap stabil di berbagai kondisi iklim." },
+      { icon: "Settings2", label: "Mudah Pemasangan", desc: "Efisien dan praktis dalam aplikasi." },
+    ],
+  },
+  {
+    eyebrow: "PRODUK KAMI",
+    name: "Coil / Pelapis",
+    desc: "Solusi pelapisan tahan cuaca dan tahan lama untuk berbagai kebutuhan konstruksi.",
+    image: "/images/Produk Material - Cat.png",
+    href: "/produk/coil-pelapis",
+    icons: [
+      { icon: "shield", label: "Tahan Air", desc: "Mencegah rembesan dan kebocoran." },
+      { icon: "layers", label: "Kuat & Tahan Lama", desc: "Performa stabil dalam jangka panjang." },
+      { icon: "thermometer", label: "Tahan Cuaca Ekstrem", desc: "Tahan terhadap panas, hujan dan perubahan suhu." },
+      { icon: "Settings2", label: "Mudah Pemasangan", desc: "Aplikasi cepat dan efisien." },
+    ],
+  },
+];
+---
+
+<section class="material-category">
+  <div class="container">
+    <div class="material-grid">
+      {categories.map((item) => (
+        <div class="material-card">
+          <div class="material-image">
+            <img src={item.image} alt={item.name} />
+          </div>
+          <div class="material-body">
+            <p class="material-eyebrow">
+              {item.eyebrow}
+              <span class="eyebrow-line"></span>
+            </p>
+            <h3 class="material-name">{item.name}</h3>
+            <p class="material-desc">{item.desc}</p>
+
+            <div class="material-icons">
+              {item.icons.map((iconItem) => (
+                <div class="icon-item">
+                  <span class="icon-badge">
+                    {iconItem.icon === "shield" && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L4 5v6c0 5 3.5 9 8 11 4.5-2 8-6 8-11V5l-8-3z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                      </svg>
+                    )}
+                    {iconItem.icon === "layers" && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M2 7l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M2 12l10 5 10-5" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                      </svg>
+                    )}
+                    {iconItem.icon === "thermometer" && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M14 14.76V5a2 2 0 10-4 0v9.76a4 4 0 104 0z" stroke="currentColor" stroke-width="1.5"/>
+                      </svg>
+                    )}
+                    {iconItem.icon === "Settings2" && (
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M14.7 6.3a4 4 0 00-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 005.4-5.4l-2.6 2.6-2-2 2.6-2.6z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    )}
+                  </span>
+                  <div class="icon-text">
+                    <h4 class="icon-label">{iconItem.label}</h4>
+                    <p class="icon-desc">{iconItem.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .material-category {
+    padding-block: px;
+  }
+
+  .material-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-6);
+  }
+
+  .material-card {
+    grid-column: span 6;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: var(--space-6);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    background: var(--color-white);
+    box-shadow: var(--shadow-01);
+  }
+
+ .material-image {
+  grid-column: span 3;
+  display: flex;
+}
+
+.material-image img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  display: block;
+}
+
+.material-body {
+  grid-column: span 3;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-block: var(--space-4);
+}
+  .material-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: var(--color-primary-blue);
+    margin: 0 0 var(--space-3);
+  }
+
+  .eyebrow-line {
+    display: block;
+    width: 32px;
+    height: 2px;
+    background: var(--color-primary-blue);
+  }
+
+  .material-name {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 32px;
+    color: var(--color-primary-navy);
+    margin: 0 0 var(--space-4);
+  }
+
+  .material-desc {
+    font-family: var(--font-family-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--color-secondary-text);
+    margin: 0 0 var(--space-8);
+  }
+
+  .material-icons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6) var(--space-5);
+  }
+
+  .icon-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .icon-badge {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    background: var(--color-light-blue);
+    color: var(--color-primary-navy);
+    border-radius: var(--radius-sm);
+  }
+
+  .icon-text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .icon-label {
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--color-primary-navy);
+    margin: 0 0 4px;
+  }
+
+  .icon-desc {
+    font-family: var(--font-family-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--color-secondary-text);
+    margin: 0;
+  }
+
+  @media (max-width: 991px) {
+    .material-card {
+      grid-template-columns: 1fr;
+    }
+    .material-image,
+    .material-body {
+      grid-column: span 1;
+    }
+    .material-image img {
+      min-height: 260px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .material-grid {
+      grid-template-columns: 1fr;
+    }
+    .material-card {
+      grid-column: span 1;
+    }
+    .material-icons {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
