@@ -1,0 +1,147 @@
+---
+interface BidangUsahaItem {
+  number: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  items: BidangUsahaItem[];
+}
+
+const { title, subtitle, items } = Astro.props;
+---
+
+<section class="bidang-section">
+  <div class="container">
+    <div class="bidang-header">
+      <h2 class="bidang-title">{title}</h2>
+      <span class="bidang-underline"></span>
+      <p class="bidang-subtitle">{subtitle}</p>
+    </div>
+
+    <div class="bidang-grid">
+      {items.map((item) => (
+        <div class="bidang-card">
+          <div class="bidang-image">
+            <img src={item.image} alt={item.title} />
+          </div>
+          <p class="bidang-number">{item.number}</p>
+          <h3 class="bidang-card-title">{item.title}</h3>
+          <p class="bidang-desc">{item.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .bidang-section {
+    padding-block: var(--space-16);
+  }
+
+  .bidang-header {
+    margin-bottom: var(--space-10);
+  }
+
+  .bidang-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--color-primary-navy);
+    margin: 0 0 var(--space-3);
+  }
+
+  .bidang-underline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    width: 60px;
+    height: 3px;
+    background: var(--color-primary-navy);
+    border-radius: var(--radius-pill);
+    margin-bottom: var(--space-4);
+    position: relative;
+  }
+
+  .bidang-underline::after {
+    content: "";
+    position: absolute;
+    left: 68px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--color-primary-navy);
+    box-shadow: 10px 0 0 var(--color-primary-navy);
+  }
+
+  .bidang-subtitle {
+    font-family: var(--font-family-body);
+    font-size: var(--text-body);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .bidang-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+  }
+
+  .bidang-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .bidang-image {
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    margin-bottom: var(--space-4);
+  }
+
+  .bidang-image img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+
+  .bidang-number {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: var(--text-body-sm);
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-1);
+  }
+
+  .bidang-card-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-primary-navy);
+    margin: 0 0 var(--space-3);
+  }
+
+  .bidang-desc {
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-sm);
+    line-height: 1.6;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .bidang-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .bidang-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

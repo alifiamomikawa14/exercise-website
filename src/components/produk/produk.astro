@@ -1,10 +1,22 @@
 ---
+interface Props {
+  title: string;
+  linkText?: string;
+  linkHref?: string;
+}
+
+const {
+  title,
+  linkText = "Lihat Semua",
+  linkHref = "/",
+} = Astro.props;
 ---
+
 <section class="product">
   <div class="container">
     <div class="product-header">
       <h2 class="product-title">
-        Produk Unggulan
+        {title}
         <span class="title-underline">
           <span class="underline-bar"></span>
           <span class="underline-dot"></span>
@@ -12,8 +24,8 @@
         </span>
       </h2>
 
-      <a href="/produk" class="product-link">
-        Lihat Semua Produk
+      <a href={linkHref} class="product-link">
+        {linkText}
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
           <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>

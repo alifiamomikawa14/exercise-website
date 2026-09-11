@@ -1,19 +1,44 @@
 ---
 import { navItems } from "../../Data/navLink.ts";
+
+const defaultLang = "id";
+const currentNav = navItems[defaultLang];
 ---
 
 <nav class="main-nav" aria-label="Main navigation">
-  <ul>
-    {navItems.map((item) => (
-        <li class={item.dropdown? "has-dropdown" : ""}>
+  <ul id="main-nav-list">
+    {currentNav.map((item) => (
+        <li class={item.dropdown ? "has-dropdown" : ""}>
             <a href={item.href}>
                 {item.name}
                 {item.dropdown && (
                    <svg class="dropdown-icon" width="10" height="6" viewBox="0 0 10 6" fill="none">
                       <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg> 
+                    </svg>
                 )}
             </a>
+
+            {item.dropdown && item.children && (
+              <div class="dropdown-panel">
+                <ul>
+                  {item.children.map((child) => (
+                    <li>
+                      <a
+                        href={child.href}
+                        class={"highlight" in child && child.highlight ? "dropdown-highlight" : ""}
+                      >
+                        {child.name}
+                        {"highlight" in child && child.highlight && (
+                          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                            <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                        )}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
         </li>
       ))}
   </ul>
@@ -28,6 +53,7 @@ import { navItems } from "../../Data/navLink.ts";
         margin: 0;
         padding: 0;
     }
+
     .main-nav a{
         display: flex;
         align-items: center;
@@ -38,10 +64,75 @@ import { navItems } from "../../Data/navLink.ts";
         color: var(--color-text);
         text-decoration: none;
     }
+
     .main-nav a:hover {
-    color: var(--color-primary-blue);
+        color: var(--color-primary-blue);
     }
-     .dropdown-icon {
-        margin-left: var(--space-2); 
+
+    .dropdown-icon {
+        margin-left: var(--space-2);
+        transition: transform 0.2s ease;
+    }
+
+    .has-dropdown {
+        position: relative;
+    }
+
+    .has-dropdown:hover .dropdown-icon {
+        transform: rotate(180deg);
+    }
+
+    .dropdown-panel {
+        position: absolute;
+        top: calc(100% + 16px);
+        left: -20px;
+        min-width: 240px;
+        background: var(--color-white);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-03);
+        padding: var(--space-3);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(8px);
+        transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+        z-index: 50;
+    }
+
+    .has-dropdown:hover .dropdown-panel {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .dropdown-panel ul {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+    }
+
+    .dropdown-panel a {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        padding: var(--space-2) var(--space-3);
+        border-radius: var(--radius-sm);
+        font-weight: 500;
+        font-size: 14px;
+        color: var(--color-text);
+    }
+
+    .dropdown-panel a:hover {
+        background: var(--color-light-blue);
+        color: var(--color-primary-blue);
+    }
+
+    .dropdown-panel .dropdown-highlight {
+        color: var(--color-primary-blue);
+        font-weight: 600;
+        border-bottom: 1px solid var(--color-border);
+        border-radius: 0;
+        padding-bottom: var(--space-3);
+        margin-bottom: var(--space-2);
     }
 </style>

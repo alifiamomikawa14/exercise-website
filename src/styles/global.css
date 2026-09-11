@@ -21,7 +21,7 @@
     --font-family: 'Poppins', sans-serif;
     --font-family-body: 'Inter', sans-serif;
     /* font size */
-    --text-h1: 700 46x/56px var(--font-family);
+    --text-h1: 700 46px/56px var(--font-family);
     --text-h2: 700 36px/44px var(--font-family);
     --text-h3: 600 28px/36px var(--font-family);
     --text-h4: 600 20px/28px var(--font-family);
@@ -74,12 +74,30 @@
     --gutter-mobile: 16px;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-family-body);
   color: var(--color-text);
   background: var(--color-background);
 }
 
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+}
 
 .container {
   width: 100%;
@@ -96,28 +114,25 @@ body {
   gap: var(--grid-gutter);
 }
 
-
-/* @media (max-width: 1199px) and (min-width: 768px) {
+@media (max-width: 1199px) and (min-width: 768px) {
   .container {
-    padding-inline: 24px; /* margin tablet, sesuaikan kalau ada spek pasti */
-  /* }
+    padding-inline: var(--gutter-tablet);
+  }
   .grid {
     grid-template-columns: repeat(8, 1fr);
-    gap: 20px;
+    gap: var(--gutter-tablet);
   }
-} */
+}
 
-
-/* @media (max-width: 767px) {
+@media (max-width: 767px) {
   .container {
-    padding-inline: 16px;
+    padding-inline: var(--gutter-mobile);
   }
   .grid {
     grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
+    gap: var(--gutter-mobile);
   }
-} */ */
-
+}
 
 .col-1  { grid-column: span 1; }
 .col-2  { grid-column: span 2; }

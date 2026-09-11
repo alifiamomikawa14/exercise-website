@@ -1,18 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Hero from '../components/hero-image/hero.astro';
+import Hero from "../components/hero-image/hero.astro";
+import { heroHome } from "../Data/HeroImage";
 import Tentang from '../components/tentang-kami/Tentang.astro';
 import TrustBar from '../components/trust-bar/TrustBar.astro';
 import Produk from '../components/produk/produk.astro';
 import ProdukMaterial from '../components/produk/MaterialProduk.astro';
+import JenisProduk from '../components/produk/JenisProduk.astro';
+import Proyek from '../components/Proyek/Project.astro';
+import CallToAction from '../components/CTA/call-to-action.astro';
 ---
 
 <Layout title="Beranda">
-  <Hero />
+  <Hero {...heroHome}/>
   <Tentang />
   <TrustBar />
-  <Produk />
+  <Produk title="Produk Kami" linkText="Lihat Semua" linkHref="/produk" />
   <ProdukMaterial />
+  <Produk title="Jenis Produk" linkText="Lihat Semua" linkHref="/jenis-produk" />
+  <JenisProduk />
+  <Produk title="Proyek Kami" linkText="Lihat Semua" linkHref="/proyek" />
+  <Proyek />
+  <CallToAction
+    title="Siap Mewujudkan Proyek Terbaik Anda?"
+    description="Tim kami siap membantu memberikan solusi waterproofing yang sesuai dengan kebutuhan proyek Anda"
+    buttonText="Hubungi Kami"
+    buttonHref="/kontak"
+  />
+
+  
 
   <div class="container">
     <!-- section berikutnya -->

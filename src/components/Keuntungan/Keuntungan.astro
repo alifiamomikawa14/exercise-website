@@ -1,0 +1,172 @@
+---
+interface KeuntunganItem {
+  number: string;
+  title: string;
+  description: string;
+  icon: "diamond" | "shield" | "chat" | "growth";
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  items: KeuntunganItem[];
+}
+
+const { eyebrow, title, items } = Astro.props;
+---
+
+<section class="keuntungan-section">
+  <div class="container">
+    <p class="keuntungan-eyebrow">{eyebrow}</p>
+    <h2 class="keuntungan-title">{title}</h2>
+    <span class="keuntungan-underline"></span>
+
+    <div class="keuntungan-bar">
+      {items.map((item, index) => (
+        <>
+          <div class="keuntungan-item">
+            
+
+            <div class="item-text">
+              <p class="item-number">{item.number}</p>
+              <h3 class="item-title">{item.title}</h3>
+              <p class="item-desc">{item.description}</p>
+            </div>
+          </div>
+
+          {index < items.length - 1 && <div class="item-divider"></div>}
+        </>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .keuntungan-section {
+    padding-block: var(--space-16);
+  }
+
+  .keuntungan-eyebrow {
+    font-family: var(--font-family-body);
+    font-weight: 700;
+    font-size: var(--text-body-sm);
+    color: var(--color-primary-blue);
+    margin: 0 0 var(--space-2);
+  }
+
+  .keuntungan-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--color-primary-navy);
+    margin: 0 0 var(--space-3);
+  }
+
+  .keuntungan-underline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    width: 60px;
+    height: 3px;
+    background: var(--color-primary-navy);
+    border-radius: var(--radius-pill);
+    margin-bottom: var(--space-8);
+    position: relative;
+  }
+
+  .keuntungan-underline::after {
+    content: "";
+    position: absolute;
+    left: 68px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--color-primary-navy);
+    box-shadow: 10px 0 0 var(--color-primary-navy);
+  }
+
+  .keuntungan-bar {
+    display: flex;
+    align-items: stretch;
+    background: var(--color-primary-navy);
+    border-radius: var(--radius-lg);
+    padding: var(--space-10) var(--space-8);
+  }
+
+  .keuntungan-item {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding-inline: var(--space-4);
+  }
+
+  .item-icon {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .item-text {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .item-number {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: var(--text-caption);
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0;
+  }
+
+  .item-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: var(--text-body-lg);
+    color: #fff;
+    margin: 0;
+  }
+
+  .item-desc {
+    font-family: var(--font-family-body);
+    font-size: var(--text-caption);
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+  }
+
+  .item-divider {
+    width: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 900px) {
+    .keuntungan-bar {
+      flex-wrap: wrap;
+      gap: var(--space-6);
+    }
+
+    .keuntungan-item {
+      flex: 1 1 45%;
+      padding-inline: 0;
+    }
+
+    .item-divider {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .keuntungan-item {
+      flex: 1 1 100%;
+    }
+  }
+</style>

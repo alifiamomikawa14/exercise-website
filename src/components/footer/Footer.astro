@@ -1,0 +1,297 @@
+---
+const navigasi = [
+  { name: "Beranda", href: "/" },
+  { name: "Tentang Kami", href: "/tentang-kami" },
+  { name: "Produk", href: "/produk" },
+  { name: "Sevice", href: "/service" },
+  { name: "Proyek", href: "/proyek" },
+  { name: "Berita", href: "/berita" },
+];
+
+const kategoriMaterial = [
+  { name: "Coil", href: "/produk/coil" },
+  { name: "Cat", href: "/produk/cat" },
+];
+
+const kategoriJenis = [
+  { name: "Membrane", href: "/produk/membrane" },
+  { name: "Coating", href: "/produk/coating" },
+  { name: "Cement", href: "/produk/cement" },
+  { name: "Roofing", href: "/produk/roofing" },
+  { name: "Repair & Grouting", href: "/produk/repair-grouting" },
+];
+
+const layanan = [
+  { name: "Konsultasi Produk", href: "/layanan/konsultasi" },
+  { name: "Dukungan Teknis", href: "/layanan/dukungan-teknis" },
+  { name: "Dokumentasi Produk", href: "/layanan/dokumentasi" },
+  { name: "Pelatihan", href: "/layanan/pelatihan" },
+];
+
+const CONTACT = {
+  phone: "0823-5516-6430",
+  email: "ptwandaoindustriindonesia@gmail.com",
+  address: "Ruko Mega Kuningan Blok E No. 26 PIK 2, Salembaran, Tangerang, Banten",
+};
+
+const SOCIAL = {
+  whatsapp: "https://wa.me/6282355166430",
+  instagram: "https://instagram.com/wandaoindustri",
+  email: `mailto:${CONTACT.email}`,
+};
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <p class="brand-name">PT Wandao Industri Indonesia</p>
+        <p class="brand-tagline">Manufacturing Solutions Expert</p>
+        <p class="brand-desc">
+          Solusi material waterproofing yang berkualitas serta tahan lama.
+        </p>
+
+        <div class="social-links">
+          <a href={SOCIAL.whatsapp} class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.4-.7-1.6-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.8 1-.1.1-.3.2-.5.1-.7-.3-1.4-.8-2-1.4-.5-.5-1-1.1-1.4-1.8-.1-.2 0-.4.1-.5.1-.1.2-.3.3-.4.1-.1.2-.3.2-.4.1-.1 0-.3 0-.4-.1-.1-.5-1.3-.7-1.7-.2-.5-.4-.4-.5-.4h-.4c-.1 0-.4.1-.6.3-.2.2-.8.8-.8 1.9s.8 2.2 1 2.4c.1.1 1.6 2.4 3.8 3.4.5.2 1 .4 1.3.5.5.2 1 .2 1.4.1.4-.1 1.4-.6 1.6-1.1.2-.5.2-1 .1-1.1-.1-.1-.2-.1-.4-.2z" />
+            </svg>
+          </a>
+
+          <a href={SOCIAL.instagram} class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6" />
+              <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+            </svg>
+          </a>
+
+          <a href={SOCIAL.email} class="social-icon" aria-label="Email">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+              <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6" />
+              <path d="M3 6l9 7 9-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="col-title">Navigasi</h4>
+        <ul class="col-list">
+          {navigasi.map((item) => (
+            <li><a href={item.href}>{item.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col produk-col">
+        <h4 class="col-title">Kategori Produk</h4>
+        <div class="produk-sub-grid">
+          <div class="produk-sub">
+            <p class="sub-title">Berdasarkan Material</p>
+            <ul class="col-list">
+              {kategoriMaterial.map((item) => (
+                <li><a href={item.href}>{item.name}</a></li>
+              ))}
+            </ul>
+          </div>
+
+          <div class="produk-sub">
+            <p class="sub-title">Berdasarkan Jenis</p>
+            <ul class="col-list">
+              {kategoriJenis.map((item) => (
+                <li><a href={item.href}>{item.name}</a></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="col-title">Layanan</h4>
+        <ul class="col-list">
+          {layanan.map((item) => (
+            <li><a href={item.href}>{item.name}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4 class="col-title">Kontak Kami</h4>
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+              <path d="M4 5c0 8 7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6-4 3z" fill="currentColor" />
+            </svg>
+            <span>{CONTACT.phone}</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+              <rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6" />
+              <path d="M3 6l9 7 9-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>{CONTACT.email}</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none">
+              <path d="M12 21s-7-6.2-7-11a7 7 0 1 1 14 0c0 4.8-7 11-7 11z" fill="currentColor" />
+              <circle cx="12" cy="10" r="2.5" fill="#0a1229" />
+            </svg>
+            <span>{CONTACT.address}</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--color-primary-navy, #0a1229);
+    padding: 48px 0 32px;
+    border-top: 4px solid var(--color-primary-blue, #2e5bff);
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1.6fr 1fr 1.2fr;
+    gap: 32px;
+  }
+
+  .footer-brand {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .brand-name {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    margin: 0;
+  }
+
+  .brand-tagline {
+    font-family: var(--font-family-body);
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.5);
+    margin: 0 0 8px;
+  }
+
+  .brand-desc {
+    font-family: var(--font-family-body);
+    font-size: 12px;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0 0 12px;
+    max-width: 220px;
+  }
+
+  .social-links {
+    display: flex;
+    gap: 8px;
+  }
+
+  .social-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .social-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .col-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 13px;
+    color: #fff;
+    margin: 0 0 16px;
+  }
+
+  .col-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .col-list a {
+    font-family: var(--font-family-body);
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+  }
+
+  .col-list a:hover {
+    color: #fff;
+  }
+
+  .produk-sub-grid {
+    display: flex;
+    gap: 24px;
+  }
+
+  .sub-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 12px;
+    color: #fff;
+    margin: 0 0 12px;
+  }
+
+  .contact-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .contact-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .contact-list svg {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #fff;
+  }
+
+  .contact-list span {
+    font-family: var(--font-family-body);
+    font-size: 12.5px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-top {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 640px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+    }
+
+    .produk-sub-grid {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+</style>

@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero  from '../components/hero-image/hero.astro';
+import { heroAbout } from '../Data/HeroImage';
+import ProfilePerusahaan from '../components/profile-perusahaan/Profile.astro';
+import {profilPerusahaan} from '../Data/Profile';
+import TentangPerusahaan from "../components/tentangPerusahaan/TentangPerusahaan.astro";
+import {tentangPerusahaan} from '../Data/TentangPerusahaan';
+import BidangUsaha  from '../components/bidang-usaha/BidangUsaha.astro';
+import { bidangUsaha } from '../Data/BidangUsaha';
+import ProdukSediakan  from '../components/produk-sediakan/ProdukSediakan.astro';
+import {produkSediakan} from '../Data/ProdukSediakan';
+import BrandPatner from'../components/brand-patner/BrandPatner.astro';
+import {brandPartner} from '../Data/BrandPatner';
+import Keuntungan from '../components/Keuntungan/Keuntungan.astro';
+import { keuntungan } from '../Data/Keuntunga';
+import SolusiSektor from '../components/solusi-sektor/SolusiSektor.astro';
+import {solusiSektor} from '../Data/SolusiSektor';
+import CTAprofile from '../components/CTA/call-to-action-profile.astro';
+import {ctaProfile} from '../Data/CTAprofile';
+---
+<Layout title='tentang-kami'>
+<Hero {...heroAbout}/>
+<ProfilePerusahaan {...profilPerusahaan} />
+<TentangPerusahaan {...tentangPerusahaan}/>
+<BidangUsaha {...bidangUsaha}/>
+<ProdukSediakan {...produkSediakan}/>
+<BrandPatner {...brandPartner}/>
+<Keuntungan {...keuntungan}/>
+<SolusiSektor {...solusiSektor}/>
+<CTAprofile {...ctaProfile}/>
+</Layout>

@@ -1,0 +1,109 @@
+---
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  image: string;
+}
+
+const { eyebrow, title, description, image } = Astro.props;
+---
+
+<section class="produk-sediakan-section">
+  <div class="container">
+    <div class="produk-grid">
+      <div class="produk-image">
+        <img src={image} alt={title} />
+      </div>
+
+      <div class="produk-content">
+        <p class="produk-eyebrow">{eyebrow}</p>
+        <h2 class="produk-title">{title}</h2>
+        <span class="produk-underline"></span>
+        <p class="produk-desc">{description}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .produk-sediakan-section {
+    padding-block: var(--space-16);
+  }
+
+  .produk-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-10);
+    align-items: center;
+  }
+
+  .produk-image {
+    grid-column: span 6;
+  }
+
+  .produk-image img {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  .produk-content {
+    grid-column: span 6;
+  }
+
+  .produk-eyebrow {
+    font-family: var(--font-family-body);
+    font-weight: 700;
+    font-size: var(--text-body-sm);
+    color: var(--color-primary-blue);
+    margin: 0 0 var(--space-2);
+  }
+
+  .produk-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--color-primary-navy);
+    margin: 0 0 var(--space-3);
+  }
+
+  .produk-underline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    width: 60px;
+    height: 3px;
+    background: var(--color-primary-navy);
+    border-radius: var(--radius-pill);
+    margin-bottom: var(--space-6);
+    position: relative;
+  }
+
+  .produk-underline::after {
+    content: "";
+    position: absolute;
+    left: 68px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--color-primary-navy);
+    box-shadow: 10px 0 0 var(--color-primary-navy);
+  }
+
+  .produk-desc {
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .produk-image,
+    .produk-content {
+      grid-column: span 12;
+    }
+  }
+</style>

@@ -1,0 +1,158 @@
+---
+interface CtaButton {
+  text: string;
+  href: string;
+  external?: boolean;
+}
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  description: string;
+  backgroundImage: string;
+  button?: CtaButton;
+}
+
+const { eyebrow, title, description, backgroundImage, button } = Astro.props;
+---
+
+<section class="cta-material-section">
+  <div class="container">
+    <div class="cta-material-banner" style={`background-image: url('${backgroundImage}')`}>
+      <div class="cta-overlay"></div>
+
+      <div class="cta-content">
+        <p class="cta-eyebrow">{eyebrow}</p>
+        <span class="cta-underline"></span>
+        <h2 class="cta-title">{title}</h2>
+        <p class="cta-desc">{description}</p>
+
+        {button && (
+          <a
+            href={button.href}
+            class="cta-btn"
+            target={button.external ? "_blank" : undefined}
+            rel={button.external ? "noopener noreferrer" : undefined}
+          >
+            {button.text}
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-material-section {
+    padding-block: var(--space-10);
+  }
+
+  .cta-material-banner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: var(--radius-xl);
+    padding: var(--space-8) var(--space-10);
+    overflow: hidden;
+  }
+
+  .cta-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      rgba(7, 26, 77, 0.95) 0%,
+      rgba(11, 42, 122, 0.85) 45%,
+      rgba(18, 61, 158, 0.4) 75%,
+      rgba(18, 61, 158, 0.1) 100%
+    );
+  }
+
+  .cta-content {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+  }
+
+  .cta-eyebrow {
+    font-family: var(--font-family-body);
+    font-weight: 700;
+    font-size: var(--text-caption);
+    letter-spacing: 1px;
+    color: #fff;
+    margin: 0 0 var(--space-3);
+  }
+
+  .cta-underline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    width: 44px;
+    height: 3px;
+    background: #F59E0B;
+    border-radius: var(--radius-pill);
+    margin-bottom: var(--space-5);
+    position: relative;
+  }
+
+  .cta-underline::after {
+    content: "";
+    position: absolute;
+    left: 52px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #F59E0B;
+    box-shadow: 10px 0 0 #F59E0B;
+  }
+
+  .cta-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1.4;
+    color: #fff;
+    margin: 0 0 var(--space-3);
+  }
+
+  .cta-desc {
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-sm);
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.85);
+    margin: 0;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-top: var(--space-6);
+    background: #F59E0B;
+    color: var(--color-primary-navy);
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    padding: var(--space-3) var(--space-6);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+  }
+
+  .cta-btn:hover {
+    background: #d98a08;
+  }
+
+  @media (max-width: 767px) {
+    .cta-content {
+      max-width: 100%;
+    }
+
+    .cta-title {
+      font-size: 20px;
+    }
+  }
+</style>

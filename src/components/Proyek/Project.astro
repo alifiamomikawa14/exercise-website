@@ -1,0 +1,66 @@
+---
+import ProjectShowcase from "./ProjectShowcase.astro"
+---
+
+<section class="projects-section">
+  <div class="container">
+    <div class="projects-grid">
+      <ProjectShowcase
+        title="Proyek Waterproofing Pabrik"
+        description="Pekerjaan waterproofing pada bangunan pabrik menggunakan material dan solusi waterproofing untuk membantu melindungi struktur bangunan dari risiko kebocoran dan rembesan air."
+        mainImage="/images/Proyek 1- Image 1.jpg"
+        thumbnails={[
+          "/images/Proyek 1- Image 5.jpg",
+          "/images/Proyek 1- Image 2.jpg",
+          "/images/Proyek 1- Image 3.jpg",
+          "/images/Proyek 1- Image 4.jpg",
+        ]}
+        info={[
+          { label: "Lokasi", value: "Jakarta, Indonesia", icon: "location" },
+          { label: "Jenis Proyek", value: "Pabrik / Industri", icon: "type" },
+          { label: "Bidang Pekerjaan", value: "Waterproofing", icon: "field" },
+          { label: "Brand", value: "Hongyuan Waterproofing", icon: "brand" },
+        ]}
+      />
+
+      <ProjectShowcase
+        title="Coming Soon"
+        description="Informasi proyek terbaru sedang kami siapkan. Nantikan update selanjutnya mengenai proyek yang akan datang."
+        mainImage="/images/Coming soon project.png"
+        thumbnails={[
+          "/images/Coming soon tumb.png",
+          "/images/Coming soon tumb.png",
+          "/images/Coming soon tumb.png",
+          "/images/Coming soon tumb.png",
+        ]}
+        info={[
+          { label: "Lokasi", value: "Akan segera diumumkan", icon: "location" },
+          { label: "Jenis Proyek", value: "Akan segera diumumkan", icon: "type" },
+          { label: "Bidang Pekerjaan", value: "Akan segera diumumkan", icon: "field" },
+          { label: "Brand", value: "Akan segera diumumkan", icon: "brand" },
+        ]}
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    padding-block: 30px;
+  }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 40px;
+  }
+
+  .projects-grid > :global(*) {
+    grid-column: span 6;
+  }
+
+  @media (max-width: 1024px) {
+    .projects-grid > :global(*) {
+      grid-column: span 12;
+    }
+  }
+</style>

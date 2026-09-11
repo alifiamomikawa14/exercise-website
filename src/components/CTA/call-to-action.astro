@@ -1,0 +1,162 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  buttonHref?: string;
+  logoSrc?: string;
+}
+
+const {
+  title = "Siap Mewujudkan Proyek Terbaik Anda?",
+  description = "Tim kami siap membantu memberikan solusi waterproofing yang sesuai dengan kebutuhan proyek Anda",
+  buttonText = "Hubungi Kami",
+  buttonHref = "/kontak",
+  logoSrc,
+} = Astro.props;
+---
+
+<section class="cta-banner">
+  <div class="container">
+    <div class="cta-inner">
+      <div class="cta-left">
+        <div class="cta-icon">
+          {logoSrc ? (
+            <img src={logoSrc} alt="Logo" class="cta-logo-img" />
+          ) : (
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none">
+              <path
+                d="M4 13v-1a8 8 0 0 1 16 0v1"
+                stroke="#fff"
+                stroke-width="1.8"
+                stroke-linecap="round"
+              />
+              <rect x="3" y="13" width="4" height="6" rx="2" fill="#fff" />
+              <rect x="17" y="13" width="4" height="6" rx="2" fill="#fff" />
+              <path
+                d="M19 19v1a3 3 0 0 1-3 3h-2"
+                stroke="#fff"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                fill="none"
+              />
+            </svg>
+          )}
+        </div>
+
+        <div class="cta-text">
+          <h3 class="cta-title">{title}</h3>
+          <p class="cta-desc">{description}</p>
+        </div>
+      </div>
+
+      <a href={buttonHref} class="cta-button">
+        {buttonText}
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M3 8h10M9 4l4 4-4 4"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta-banner {
+    padding-block: 40px;
+  }
+
+  .cta-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: var(--color-primary-navy, #0a1229);
+    border-radius: 20px;
+    padding: 40px 36px;
+  }
+
+  .cta-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .cta-icon {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-primary-blue, #2e5bff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .cta-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .cta-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 16px;
+    color: #fff;
+    margin: 0;
+  }
+
+  .cta-desc {
+    font-family: var(--font-family-body);
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.65);
+    margin: 0;
+  }
+
+  .cta-button {
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--color-primary-blue, #2e5bff);
+    color: #fff;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .cta-button:hover {
+    background: var(--color-blue, #1a4ae0);
+  }
+
+  @media (max-width: 640px) {
+    .cta-inner {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 24px;
+    }
+
+    .cta-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>

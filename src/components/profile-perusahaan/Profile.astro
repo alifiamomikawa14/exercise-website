@@ -1,0 +1,106 @@
+---
+interface Props {
+  title: string;
+  paragraphs: string[];
+  image: string;
+}
+
+const { title, paragraphs, image } = Astro.props;
+---
+
+<section class="profil-section">
+  <div class="container">
+    <div class="profil-grid">
+      <div class="profil-image">
+        <img src={image} alt={title} />
+      </div>
+
+      <div class="profil-content">
+        <h2 class="profil-title">{title}</h2>
+        <span class="profil-underline"></span>
+
+        {paragraphs.map((text) => (
+          <p class="profil-desc">{text}</p>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .profil-section {
+    padding-block: var(--space-16);
+  }
+
+  .profil-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: var(--space-10);
+    align-items: center;
+  }
+
+  .profil-image {
+    grid-column: span 6;
+  }
+
+  .profil-image img {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    object-fit: cover;
+    aspect-ratio: 4/3;
+  }
+
+  .profil-content {
+    grid-column: span 6;
+  }
+
+  .profil-title {
+    font-family: var(--font-family);
+    font-weight: 700;
+    font-size: 28px;
+    color: var(--color-primary-navy);
+    margin: 0 0 var(--space-3);
+  }
+
+  .profil-underline {
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+    width: 44px;
+    height: 3px;
+    background: var(--color-primary-navy);
+    border-radius: var(--radius-pill);
+    margin-bottom: var(--space-6);
+    position: relative;
+  }
+
+  .profil-underline::after {
+    content: "";
+    position: absolute;
+    left: 52px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--color-primary-navy);
+    box-shadow: 10px 0 0 var(--color-primary-navy);
+  }
+
+  .profil-desc {
+    font-family: var(--font-family-body);
+    font-size: var(--text-body-lg);
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin: 0 0 var(--space-5);
+  }
+
+  .profil-desc:last-child {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 900px) {
+    .profil-image,
+    .profil-content {
+      grid-column: span 12;
+    }
+  }
+</style>
